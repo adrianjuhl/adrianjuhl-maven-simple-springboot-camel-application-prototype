@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+<!-- 
+  <parent>
+    <groupId>au.edu.adelaide.integration.fuse</groupId>
+    <artifactId>fuse-springboot-parent</artifactId>
+    <version>1.4.3</version>
+  </parent>
+ -->
+
+  <parent>
+    <groupId>io.github.adrianjuhl</groupId>
+    <artifactId>adrianjuhl-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>simple-springboot-camel-prototype</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <name>My springboot application name</name>
+  <description>My springboot application descripion</description>
+  <url>https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype</url>
+  <inceptionYear>2022</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>1</id>
+      <name>Adrian Juhl</name>
+      <email>adrian.juhl@gmail.com</email>
+      <url>https://github.com/adrianjuhl</url>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>Australia/Adelaide</timezone>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:github.com:adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype.git</connection>
+    <developerConnection>scm:git:github.com:adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype.git</developerConnection>
+    <url>https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype</url>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <properties>
+    <fuse-springboot-bom-version>7.10.0.fuse-sb2-7_10_0-00019-redhat-00002</fuse-springboot-bom-version>
+  </properties>
+
+<!-- 
+ <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.redhat-fuse</groupId>
+        <artifactId>fuse-springboot-bom</artifactId>
+        <version>${fuse-springboot-bom-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+ -->
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>2.3.4.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <version>2.3.4.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>net.logstash.logback</groupId>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <version>6.6</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-cxf-starter</artifactId>
+      <version>2.23.2.fuse-780036-redhat-00001</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+      <version>3.3.6.fuse-780029-redhat-00001</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
+      <version>2.9.10</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.1.0.redhat-8</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.6.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-test</artifactId>
+      <version>2.23.2.fuse-780036-redhat-00001</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-test-spring</artifactId>
+      <version>2.23.2.fuse-780036-redhat-00001</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-test</artifactId>
+      <version>2.3.4.RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.6.4</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
