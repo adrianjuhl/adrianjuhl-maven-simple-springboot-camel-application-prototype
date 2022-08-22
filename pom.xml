@@ -14,7 +14,9 @@
 
   <name>Simple Springboot Camel Application Prototype</name>
   <description>A springboot camel application that helps with the development of the springboot camel archetype.</description>
+
   <url>https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype</url>
+
   <inceptionYear>2022</inceptionYear>
 
   <licenses>
@@ -55,7 +57,6 @@
   </distributionManagement>
 
   <properties>
-    <!-- <fuse-springboot-bom-version>7.10.0.fuse-sb2-7_10_0-00019-redhat-00002</fuse-springboot-bom-version> -->
     <spring-boot-starter-web-version>2.3.4.RELEASE</spring-boot-starter-web-version>
     <spring-boot-starter-actuator-version>2.3.4.RELEASE</spring-boot-starter-actuator-version>
     <logstash-logback-encoder-version>6.6</logstash-logback-encoder-version>
@@ -68,23 +69,8 @@
     <camel-test-version>2.23.2.fuse-780036-redhat-00001</camel-test-version>
     <camel-test-spring-version>2.23.2.fuse-780036-redhat-00001</camel-test-spring-version>
     <spring-boot-test-version>2.3.4.RELEASE</spring-boot-test-version>
-
     <spring-boot-maven-plugin-version>2.6.4</spring-boot-maven-plugin-version>
   </properties>
-
-<!-- 
- <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.jboss.redhat-fuse</groupId>
-        <artifactId>fuse-springboot-bom</artifactId>
-        <version>${fuse-springboot-bom-version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
- -->
 
   <dependencies>
     <dependency>
