@@ -6,7 +6,7 @@ usage()
 {
   cat <<USAGE_TEXT
 Usage: $(basename "${BASH_SOURCE[0]}") [-h | --help] [-v | --verbose]
-Run simple-springboot-camel-application-prototype.
+Run simple-springboot-camel-application-prototype with localdev config.
 Available options:
 -h, --help         Print this help and exit
 -v, --verbose      Print script debug info
@@ -21,7 +21,7 @@ main()
 }
 
 run_app_with_localdev_config() {
-  mvn clean package -DskipTests=true \
+  mvn clean package \
   && \
   SPRING_APPLICATION_JSON=$(cat config/localdev.json) \
       java \

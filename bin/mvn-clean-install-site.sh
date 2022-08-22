@@ -36,7 +36,8 @@ mvn_clean_install_site()
 parse_script_params()
 {
   # default values of variables set from params
-  while true; do
+  while [ "${#}" -gt 0 ]
+  do
     case "${1-}" in
       --help | -h)
         usage
@@ -58,6 +59,7 @@ parse_script_params()
 
 initialize()
 {
+  set -o pipefail
   THIS_SCRIPT_PROCESS_ID=$$
   THIS_SCRIPT_DIRECTORY="$(dirname "$(readlink -f "${0}")")"
   initialize_abort_script_config
