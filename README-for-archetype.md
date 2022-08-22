@@ -29,6 +29,6 @@ $ curl -v http://127.0.0.1:8080/api/ping
 Should respond with a ping response.
 ```
 
-# Source Code
+## Source Code
 
-[https://gitlab.adelaide.edu.au/integration/app/simple-springboot-prototype](https://gitlab.adelaide.edu.au/integration/app/simple-springboot-prototype)
+[https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype](https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype)
