@@ -1,4 +1,4 @@
-package io.github.adrianjuhl.simple_springboot_camel_application_prototype;
+package io.github.adrianjuhl.archetype.simple_springboot_camel_application_prototype;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
