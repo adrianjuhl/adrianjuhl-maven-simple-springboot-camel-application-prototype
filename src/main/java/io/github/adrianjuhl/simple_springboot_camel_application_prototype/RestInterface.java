@@ -1,4 +1,4 @@
-package io.github.adrianjuhl.simple_springboot_camel_prototype;
+package io.github.adrianjuhl.simple_springboot_camel_application_prototype;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

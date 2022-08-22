@@ -1,4 +1,4 @@
-package io.github.adrianjuhl.simple_springboot_camel_prototype;
+package io.github.adrianjuhl.simple_springboot_camel_application_prototype;
 
 import org.apache.camel.component.cxf.jaxrs.CxfRsEndpoint;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;

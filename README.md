@@ -1,4 +1,4 @@
-# simple-springboot-camel-prototype
+# simple-springboot-camel-application-prototype
 
 This springboot camel application is the prototype for simple-springboot-camel-archetype.
 
@@ -34,11 +34,7 @@ Should respond with a ping response.
 
 ## Source Code
 
-https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype
-
-verses
-
-[https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype](https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-prototype)
+[https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype](https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype)
 
 ## License
 

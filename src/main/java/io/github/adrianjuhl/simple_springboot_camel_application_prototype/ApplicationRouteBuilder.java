@@ -1,15 +1,24 @@
-package io.github.adrianjuhl.simple_springboot_camel_prototype;
+package io.github.adrianjuhl.simple_springboot_camel_application_prototype;
 
 import javax.ws.rs.core.MediaType;
 
+import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ApplicationRouteBuilder extends RouteBuilder {
+
+  @Autowired
+  CamelContext camelContext;
+
+  @Value("${camel.context.shutdown.timeout}")
+  private Long camelContextShutdownTimeout;
 
   enum RouteIdentifier {
     PING                                        ("direct:handleRequestPing"),
@@ -36,6 +45,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   public void configure() throws Exception {
 
     errorHandler(noErrorHandler());
+    camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
 
     from("cxfrs:bean:restServer?bindingStyle=SimpleConsumer")
       .log(LoggingLevel.TRACE, loggerName(), "Start of route cxfrs:bean:restServer")

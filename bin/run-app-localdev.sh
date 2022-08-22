@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# Run simple-springboot-camel-prototype with localdev config.
+# Run simple-springboot-camel-application-prototype with localdev config.
 
 usage()
 {
   cat <<USAGE_TEXT
 Usage: $(basename "${BASH_SOURCE[0]}") [-h | --help] [-v | --verbose]
-Run simple-springboot-camel-prototype.
+Run simple-springboot-camel-application-prototype.
 Available options:
 -h, --help         Print this help and exit
 -v, --verbose      Print script debug info
@@ -21,15 +21,13 @@ main()
 }
 
 run_app_with_localdev_config() {
-  mvn clean package \
+  mvn clean package -DskipTests=true \
   && \
-  java \
-      -Dspring.main.banner-mode=off \
-      -Dlogging.level.root=INFO \
-      -Dlogging.level.io.github.adrianjuhl.simple_springboot_camel_prototype=TRACE \
-      -Dcxf.path=/api \
-      -jar target/simple-springboot-camel-prototype.jar \
-    | xargs -n1 -d $'\n' sh -c 'for arg do echo "$arg" | jq -S -C || echo "Plain JSON: $arg"; done' _ \
+  SPRING_APPLICATION_JSON=$(cat config/localdev.json) \
+      java \
+          -jar target/simple-springboot-camel-application-prototype.jar \
+    | xargs -n1 -d $'\n' sh -c 'for arg do echo "$arg" \
+    | jq -S -C || echo "Plain (non-jq) output: $arg"; done' _ \
     | tee target/output-logging.txt
 }
 
@@ -58,6 +56,7 @@ parse_script_params()
 
 initialize()
 {
+  set -o pipefail
   THIS_SCRIPT_PROCESS_ID=$$
   THIS_SCRIPT_DIRECTORY="$(dirname "$(readlink -f "${0}")")"
   initialize_abort_script_config

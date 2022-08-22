@@ -1,4 +1,4 @@
-package io.github.adrianjuhl.simple_springboot_camel_prototype;
+package io.github.adrianjuhl.simple_springboot_camel_application_prototype;
 
 import java.util.List;
 import java.util.Map;
@@ -15,10 +15,15 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
-import io.github.adrianjuhl.simple_springboot_camel_prototype.ApplicationRouteBuilder.RouteIdentifier;
+import io.github.adrianjuhl.simple_springboot_camel_application_prototype.Application;
+import io.github.adrianjuhl.simple_springboot_camel_application_prototype.ApplicationRouteBuilder.RouteIdentifier;
 
 @SpringBootTest(classes=Application.class)
+@TestPropertySource(properties = {
+    "camel.context.shutdown.timeout=10"
+})
 class ApplicationRouteBuilderTest {
 
   @Autowired
