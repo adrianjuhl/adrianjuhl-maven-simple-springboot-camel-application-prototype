@@ -16,10 +16,6 @@ $ ./bin/run-app-localdev.sh
 ```
 $ mvn clean spring-boot:run -Dspring.main.banner-mode=off -Dlogging.level.root=INFO
 ```
-... or package and run:
-```
-$ mvn clean package && java -Dspring.main.banner-mode=off -Dlogging.level.root=INFO -jar target/simple-springboot-camel-prototype.jar
-```
 
 ## Verify
 
