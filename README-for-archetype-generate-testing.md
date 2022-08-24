@@ -1,6 +1,6 @@
-# Name of application
+# Simple Springboot Camel Application Prototype
 
-Description of application.
+A springboot camel application that helps with the development of the springboot camel archetype.
 
 # Development
 
