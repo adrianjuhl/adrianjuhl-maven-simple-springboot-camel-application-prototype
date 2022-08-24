@@ -1,6 +1,6 @@
-# Simple Springboot Camel Application Prototype
+# Name of application
 
-A springboot camel application that helps with the development of the springboot camel archetype.
+Description of applcation.
 [TODO expand this description]
 
 ## Running the application
@@ -12,6 +12,7 @@ $ ./bin/run-app-localdev.sh
 ... or with spring-boot:run
 ```
 $ mvn clean spring-boot:run -Dspring.main.banner-mode=off -Dlogging.level.root=INFO
+$ SPRING_APPLICATION_JSON=$(cat config/localdev.json) mvn clean spring-boot:run
 ```
 
 ## Verify
@@ -27,4 +28,4 @@ Should respond with a ping response.
 
 ## Source Code
 
-[https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype](https://github.com/adrianjuhl/adrianjuhl-maven-simple-springboot-camel-application-prototype)
+[https://github.com/your-name/your-repository](https://github.com/your-name/your-repository)

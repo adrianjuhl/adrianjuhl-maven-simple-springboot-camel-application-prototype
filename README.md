@@ -14,7 +14,7 @@ $ ./bin/run-app-localdev.sh
 ```
 ... or with spring-boot:run
 ```
-$ mvn clean spring-boot:run -Dspring.main.banner-mode=off -Dlogging.level.root=INFO
+$ SPRING_APPLICATION_JSON=$(cat config/localdev.json) mvn clean spring-boot:run
 ```
 
 ## Verify
