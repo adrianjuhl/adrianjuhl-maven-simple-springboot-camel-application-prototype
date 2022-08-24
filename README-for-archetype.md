@@ -1,9 +1,10 @@
 # Name of application
 
-Description of applcation.
-[TODO expand this description]
+Description of application.
 
-## Running the application
+# Development
+
+## How to run the application
 
 Use the script:
 ```
@@ -11,11 +12,10 @@ $ ./bin/run-app-localdev.sh
 ```
 ... or with spring-boot:run
 ```
-$ mvn clean spring-boot:run -Dspring.main.banner-mode=off -Dlogging.level.root=INFO
 $ SPRING_APPLICATION_JSON=$(cat config/localdev.json) mvn clean spring-boot:run
 ```
 
-## Verify
+## How to verify the application
 
 Local:
 ```
@@ -26,6 +26,14 @@ $ curl -v http://127.0.0.1:8080/api/ping
 Should respond with a ping response.
 ```
 
-## Source Code
+# Source Code
 
-[https://github.com/your-name/your-repository](https://github.com/your-name/your-repository)
+[https://example.com/path/to/application/source](https://example.com/path/to/application/source)
+
+# License
+
+[TODO add license]
+
+# Author
+
+[Author name](http://example.com/author/url)
