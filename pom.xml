@@ -60,7 +60,7 @@
     <springBootStarterWebVersion>2.3.4.RELEASE</springBootStarterWebVersion>
     <springBootStarterActuatorVersion>2.3.4.RELEASE</springBootStarterActuatorVersion>
     <springBootStarterValidationVersion>2.3.4.RELEASE</springBootStarterValidationVersion>
-    <logstashLogbackEncoderVersion>6.6</logstashLogbackEncoderVersion>
+    <logstashLogbackEncoderVersion>7.2</logstashLogbackEncoderVersion>
     <logbackClassicVersion>1.2.6</logbackClassicVersion>
     <camelCxfStarterVersion>2.23.2.fuse-780036-redhat-00001</camelCxfStarterVersion>
     <cxfSpringBootStarterJaxrsVersion>3.5.4</cxfSpringBootStarterJaxrsVersion>
