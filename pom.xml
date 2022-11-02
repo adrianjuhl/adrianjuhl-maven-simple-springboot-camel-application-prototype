@@ -59,17 +59,18 @@
   <properties>
     <springBootStarterWebVersion>2.3.4.RELEASE</springBootStarterWebVersion>
     <springBootStarterActuatorVersion>2.3.4.RELEASE</springBootStarterActuatorVersion>
+    <springBootStarterValidationVersion>2.3.4.RELEASE</springBootStarterValidationVersion>
     <logstashLogbackEncoderVersion>6.6</logstashLogbackEncoderVersion>
     <logbackClassicVersion>1.2.6</logbackClassicVersion>
     <camelCxfStarterVersion>2.23.2.fuse-780036-redhat-00001</camelCxfStarterVersion>
-    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>
+    <cxfSpringBootStarterJaxrsVersion>3.3.13</cxfSpringBootStarterJaxrsVersion>
     <jacksonJaxrsJsonProviderVersion>2.9.10</jacksonJaxrsJsonProviderVersion>
     <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>
     <junitJupiterVersion>5.6.2</junitJupiterVersion>
     <camelTestVersion>2.23.2.fuse-780036-redhat-00001</camelTestVersion>
     <camelTestSpringVersion>2.23.2.fuse-780036-redhat-00001</camelTestSpringVersion>
     <springBootTestVersion>2.3.4.RELEASE</springBootTestVersion>
-    <springBootMavenPluginVersion>2.6.4</springBootMavenPluginVersion>
+    <springBootMavenPluginVersion>2.7.3</springBootMavenPluginVersion>
   </properties>
 
   <dependencies>
@@ -82,6 +83,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
       <version>${springBootStarterActuatorVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+      <version>${springBootStarterValidationVersion}</version>
     </dependency>
     <dependency>
       <groupId>net.logstash.logback</groupId>
