@@ -13,4 +13,9 @@ public interface RestInterface {
   @Produces({MediaType.APPLICATION_JSON})
   public void handleRequestPing();
 
+  @Path("appVersionInfo")
+  @GET
+  @Produces({MediaType.APPLICATION_JSON})
+  public void handleRequestAppVersionInfo();
+
 }

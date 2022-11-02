@@ -57,84 +57,84 @@
   </distributionManagement>
 
   <properties>
-    <spring-boot-starter-web-version>2.3.4.RELEASE</spring-boot-starter-web-version>
-    <spring-boot-starter-actuator-version>2.3.4.RELEASE</spring-boot-starter-actuator-version>
-    <logstash-logback-encoder-version>6.6</logstash-logback-encoder-version>
-    <logback-classic-version>1.2.6</logback-classic-version>
-    <camel-cxf-starter-version>2.23.2.fuse-780036-redhat-00001</camel-cxf-starter-version>
-    <cxf-spring-boot-starter-jaxrs-version>3.3.6.fuse-780029-redhat-00001</cxf-spring-boot-starter-jaxrs-version>
-    <jackson-jaxrs-json-provider-version>2.9.10</jackson-jaxrs-json-provider-version>
-    <commons-httpclient-version>3.1.0.redhat-8</commons-httpclient-version>
-    <junit-jupiter-version>5.6.2</junit-jupiter-version>
-    <camel-test-version>2.23.2.fuse-780036-redhat-00001</camel-test-version>
-    <camel-test-spring-version>2.23.2.fuse-780036-redhat-00001</camel-test-spring-version>
-    <spring-boot-test-version>2.3.4.RELEASE</spring-boot-test-version>
-    <spring-boot-maven-plugin-version>2.6.4</spring-boot-maven-plugin-version>
+    <springBootStarterWebVersion>2.3.4.RELEASE</springBootStarterWebVersion>
+    <springBootStarterActuatorVersion>2.3.4.RELEASE</springBootStarterActuatorVersion>
+    <logstashLogbackEncoderVersion>6.6</logstashLogbackEncoderVersion>
+    <logbackClassicVersion>1.2.6</logbackClassicVersion>
+    <camelCxfStarterVersion>2.23.2.fuse-780036-redhat-00001</camelCxfStarterVersion>
+    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>
+    <jacksonJaxrsJsonProviderVersion>2.9.10</jacksonJaxrsJsonProviderVersion>
+    <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>
+    <junitJupiterVersion>5.6.2</junitJupiterVersion>
+    <camelTestVersion>2.23.2.fuse-780036-redhat-00001</camelTestVersion>
+    <camelTestSpringVersion>2.23.2.fuse-780036-redhat-00001</camelTestSpringVersion>
+    <springBootTestVersion>2.3.4.RELEASE</springBootTestVersion>
+    <springBootMavenPluginVersion>2.6.4</springBootMavenPluginVersion>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>${spring-boot-starter-web-version}</version>
+      <version>${springBootStarterWebVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
-      <version>${spring-boot-starter-actuator-version}</version>
+      <version>${springBootStarterActuatorVersion}</version>
     </dependency>
     <dependency>
       <groupId>net.logstash.logback</groupId>
       <artifactId>logstash-logback-encoder</artifactId>
-      <version>${logstash-logback-encoder-version}</version>
+      <version>${logstashLogbackEncoderVersion}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>${logback-classic-version}</version>
+      <version>${logbackClassicVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-cxf-starter</artifactId>
-      <version>${camel-cxf-starter-version}</version>
+      <version>${camelCxfStarterVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
-      <version>${cxf-spring-boot-starter-jaxrs-version}</version>
+      <version>${cxfSpringBootStarterJaxrsVersion}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.jaxrs</groupId>
       <artifactId>jackson-jaxrs-json-provider</artifactId>
-      <version>${jackson-jaxrs-json-provider-version}</version>
+      <version>${jacksonJaxrsJsonProviderVersion}</version>
     </dependency>
     <dependency>
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>
-      <version>${commons-httpclient-version}</version>
+      <version>${commonsHttpclientVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>${junit-jupiter-version}</version>
+      <version>${junitJupiterVersion}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-test</artifactId>
-      <version>${camel-test-version}</version>
+      <version>${camelTestVersion}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-test-spring</artifactId>
-      <version>${camel-test-spring-version}</version>
+      <version>${camelTestSpringVersion}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-test</artifactId>
-      <version>${spring-boot-test-version}</version>
+      <version>${springBootTestVersion}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -145,12 +145,79 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring-boot-maven-plugin-version}</version>
+        <version>${springBootMavenPluginVersion}</version>
         <executions>
           <execution>
             <goals>
               <goal>repackage</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>gmaven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>set-properties-build-properties</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <configuration>
+              <source>
+                def command
+                def process
+
+                command = ["bash", "-c", "TZ=Australia/Adelaide date --iso-8601=seconds"]
+                process = command.execute()
+                process.waitFor()
+                project.properties.mvnBuildDatetime = process.in.text.trim()
+
+                command = "git rev-parse HEAD"
+                process = command.execute()
+                process.waitFor()
+                project.properties.gitCommitHash = process.in.text.trim()
+
+                command = "git show --no-patch --format=%cI HEAD"
+                process = command.execute()
+                process.waitFor()
+                project.properties.gitCommitDatetime = process.in.text.trim()
+
+                command = "git tag --points-at HEAD"
+                process = command.execute()
+                process.waitFor()
+                project.properties.gitCommitTags = process.in.text.trim()
+
+                command = "git branch --show-current"
+                process = command.execute()
+                process.waitFor()
+                project.properties.gitCommitBranch = process.in.text.trim()
+              </source>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>templating-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <id>filter-src</id>
+            <goals>
+              <goal>filter-sources</goal>
+            </goals>
+                <configuration>
+                  <!--
+                    Note the two following parameters are the default one.
+                    These are specified here just as a reminder.
+                    But as the Maven philosophy is strongly about conventions,
+                    it's better to just not specify them.
+                  -->
+                  <sourceDirectory>${basedir}/src/main/java-templates</sourceDirectory>
+                  <outputDirectory>${project.build.directory}/generated-sources/java-templates</outputDirectory>
+                </configuration>
           </execution>
         </executions>
       </plugin>

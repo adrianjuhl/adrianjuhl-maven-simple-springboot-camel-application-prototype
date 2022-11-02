@@ -22,6 +22,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
 
   enum RouteIdentifier {
     PING                                        ("direct:handleRequestPing"),
+    APP_VERSION_INFO                            ("direct:handleRequestAppVersionInfo"),
     ;
     private final String routeUri;
     private final String routeId;
@@ -75,7 +76,16 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .removeHeaders("*")
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
       .setBody(constant("{\"ping\":\"ping_response\"}"))
-      .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.PING.getRouteUri())
+       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.PING.getRouteUri())
+    ;
+
+    from(RouteIdentifier.APP_VERSION_INFO.getRouteUri())
+      .routeId(RouteIdentifier.APP_VERSION_INFO.getRouteId())
+      .log(LoggingLevel.TRACE, loggerName(), "Start of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
+      .removeHeaders("*")
+      .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
+      .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
+      .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
     ;
 
   }

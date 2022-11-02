@@ -26,6 +26,9 @@ Should respond with a HTTP 200 status and content: {"status":"UP"}
 
 $ curl -v http://127.0.0.1:8080/api/ping
 Should respond with a ping response.
+
+$ curl -v http://127.0.0.1:8080/api/appVersionInfo | jq
+Should respond with application and version information.
 ```
 
 ## Source Code

@@ -6,6 +6,6 @@
   <skin>
     <groupId>org.apache.maven.skins</groupId>
     <artifactId>maven-fluido-skin</artifactId>
-    <version>${maven-fluido-skin-version}</version>
+    <version>${mavenFluidoSkinVersion}</version>
   </skin>
 </project>
