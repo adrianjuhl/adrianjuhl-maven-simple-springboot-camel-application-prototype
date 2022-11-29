@@ -57,19 +57,19 @@
   </distributionManagement>
 
   <properties>
-    <springBootStarterWebVersion>2.3.4.RELEASE</springBootStarterWebVersion>
-    <springBootStarterActuatorVersion>2.3.4.RELEASE</springBootStarterActuatorVersion>
-    <springBootStarterValidationVersion>2.3.4.RELEASE</springBootStarterValidationVersion>
+    <springBootStarterWebVersion>2.7.5</springBootStarterWebVersion>
+    <springBootStarterActuatorVersion>2.7.5</springBootStarterActuatorVersion>
+    <springBootStarterValidationVersion>2.7.5</springBootStarterValidationVersion>
     <logstashLogbackEncoderVersion>7.2</logstashLogbackEncoderVersion>
-    <logbackClassicVersion>1.2.6</logbackClassicVersion>
-    <camelCxfStarterVersion>2.23.2.fuse-780036-redhat-00001</camelCxfStarterVersion>
+    <logbackClassicVersion>1.2.11</logbackClassicVersion>
+    <camelCxfStarterVersion>2.25.4</camelCxfStarterVersion>
     <cxfSpringBootStarterJaxrsVersion>3.5.4</cxfSpringBootStarterJaxrsVersion>
     <jacksonJaxrsJsonProviderVersion>2.9.10</jacksonJaxrsJsonProviderVersion>
     <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>
-    <junitJupiterVersion>5.6.2</junitJupiterVersion>
-    <camelTestVersion>2.23.2.fuse-780036-redhat-00001</camelTestVersion>
-    <camelTestSpringVersion>2.23.2.fuse-780036-redhat-00001</camelTestSpringVersion>
-    <springBootTestVersion>2.3.4.RELEASE</springBootTestVersion>
+    <junitJupiterVersion>5.9.1</junitJupiterVersion>
+    <camelTestVersion>2.25.4</camelTestVersion>
+    <camelTestSpringVersion>2.25.4</camelTestSpringVersion>
+    <springBootTestVersion>2.7.5</springBootTestVersion>
     <springBootMavenPluginVersion>2.7.3</springBootMavenPluginVersion>
   </properties>
 
@@ -119,6 +119,22 @@
       <artifactId>commons-httpclient</artifactId>
       <version>${commonsHttpclientVersion}</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <version>${springBootStarterWebVersion}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>5.3.23</version>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>

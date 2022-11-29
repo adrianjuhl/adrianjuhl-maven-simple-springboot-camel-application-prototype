@@ -45,6 +45,9 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
+    // The source of AppVersionInfo is within src/main/java-templates/
+    Class<?> appVersionInfoClass = Class.forName(ApplicationRouteBuilder.class.getPackageName() + ".AppVersionInfo");
+
     errorHandler(noErrorHandler());
     camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
 
@@ -84,7 +87,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .log(LoggingLevel.TRACE, loggerName(), "Start of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
       .removeHeaders("*")
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
-      .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
+      .setBody(constant(appVersionInfoClass.getMethod("toJsonString").invoke(appVersionInfoClass.getDeclaredConstructor().newInstance())))
       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
     ;
 
