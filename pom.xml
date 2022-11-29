@@ -64,7 +64,7 @@
     <logbackClassicVersion>1.2.11</logbackClassicVersion>
     <camelCxfStarterVersion>2.25.4</camelCxfStarterVersion>
     <cxfSpringBootStarterJaxrsVersion>3.5.4</cxfSpringBootStarterJaxrsVersion>
-    <jacksonJaxrsJsonProviderVersion>2.9.10</jacksonJaxrsJsonProviderVersion>
+    <jacksonJaxrsJsonProviderVersion>2.14.1</jacksonJaxrsJsonProviderVersion>
     <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>
     <junitJupiterVersion>5.9.1</junitJupiterVersion>
     <camelTestVersion>2.25.4</camelTestVersion>
