@@ -15,13 +15,8 @@ public class ApplicationConfiguration {
     CxfRsEndpoint endpoint = new CxfRsEndpoint();
     JAXRSServerFactoryBean restServer = endpoint.createJAXRSServerFactoryBean();
     restServer.setServiceClass(RestInterface.class);
-    restServer.setProvider(jsonProvider());
+    restServer.setProvider(new JacksonJsonProvider());
     return restServer;
-  }
-
-  @Bean
-  JacksonJsonProvider jsonProvider(){
-    return new JacksonJsonProvider();
   }
 
 }
