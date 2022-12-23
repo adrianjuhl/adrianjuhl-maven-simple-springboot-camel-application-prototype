@@ -9,8 +9,11 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.ProducerTemplate;
+import org.apache.camel.builder.AdviceWith;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.model.ModelCamelContext;
+import org.apache.camel.reifier.RouteReifier;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +39,19 @@ class ApplicationRouteBuilderTest {
   @Test
   public void pingRouteShouldRespondWithPingJsonResponse() throws Exception {
     MockEndpoint mockOut = getMockEndpoint("mock:out");
-    context
-      .getRouteDefinition(RouteIdentifier.PING.getRouteId())
-      .adviceWith(context, new AdviceWithRouteBuilder() {
-      @Override
-      public void configure() throws Exception {
-        weaveAddLast().to(mockOut.getEndpointUri());
-      }
+    AdviceWith.adviceWith(context, RouteIdentifier.PING.getRouteId(), a -> {
+      a.replaceFromWith("direct:start");
     });
+//    ModelCamelContext mcc = context.adapt(ModelCamelContext.class);
+//    RouteReifier. ..adviceWith(mcc.getRouteDefinition(RouteIdentifier.PING.getRouteId()), mcc, new AdviceWithRouteBuilder() {
+//    context
+//      .getRouteDefinition(RouteIdentifier.PING.getRouteId())
+//      .adviceWith(context, new AdviceWithRouteBuilder() {
+//      @Override
+//      public void configure() throws Exception {
+//        weaveAddLast().to(mockOut.getEndpointUri());
+//      }
+//    });
     context.start();
     mockOut.expectedMessageCount(1);
     template.sendBody(RouteIdentifier.PING.getRouteUri(), null);
@@ -65,14 +73,17 @@ class ApplicationRouteBuilderTest {
   @Test
   public void appVersionInfoRouteShouldRespondWithAppVersionInfoMessage() throws Exception {
     MockEndpoint mockOut = getMockEndpoint("mock:out");
-    context
-      .getRouteDefinition(RouteIdentifier.APP_VERSION_INFO.getRouteId())
-      .adviceWith(context, new AdviceWithRouteBuilder() {
-        @Override
-        public void configure() throws Exception {
-          weaveAddLast().to("mock:out");
-        }
-      });
+    AdviceWith.adviceWith(context, RouteIdentifier.APP_VERSION_INFO.getRouteId(), a -> {
+      a.replaceFromWith("direct:start");
+    });
+//    context
+//      .getRouteDefinition(RouteIdentifier.APP_VERSION_INFO.getRouteId())
+//      .adviceWith(context, new AdviceWithRouteBuilder() {
+//        @Override
+//        public void configure() throws Exception {
+//          weaveAddLast().to("mock:out");
+//        }
+//      });
     context.start();
     mockOut.expectedMessageCount(1);
     template.sendBody(RouteIdentifier.APP_VERSION_INFO.getRouteUri(), null);

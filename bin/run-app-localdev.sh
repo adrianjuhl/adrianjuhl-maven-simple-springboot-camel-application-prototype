@@ -23,7 +23,8 @@ main()
 run_app_with_localdev_config() {
   mvn clean package \
   && \
-  SPRING_APPLICATION_JSON=$(cat config/localdev.json) \
+  export SPRING_APPLICATION_JSON=$(cat config/localdev.json) \
+  && \
       java \
           -jar target/simple-springboot-camel-application-prototype.jar \
     | xargs -n1 -d $'\n' sh -c 'for arg do echo "$arg" \

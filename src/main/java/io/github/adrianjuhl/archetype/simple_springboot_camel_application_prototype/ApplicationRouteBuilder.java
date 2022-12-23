@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApplicationRouteBuilder extends RouteBuilder {
 
-  @Autowired
-  CamelContext camelContext;
+//  @Autowired
+//  CamelContext camelContext;
 
   @Value("${camel.context.shutdown.timeout}")
   private Long camelContextShutdownTimeout;
@@ -49,7 +49,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
     Class<?> appVersionInfoClass = Class.forName(ApplicationRouteBuilder.class.getPackageName() + ".AppVersionInfo");
 
     errorHandler(noErrorHandler());
-    camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
+//    camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
 
     from("cxfrs:bean:restServer?bindingStyle=SimpleConsumer")
       .log(LoggingLevel.TRACE, loggerName(), "Start of route cxfrs:bean:restServer")
