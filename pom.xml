@@ -155,50 +155,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>gmaven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>set-properties-build-properties</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>execute</goal>
-            </goals>
-            <configuration>
-              <source>
-                def command
-                def process
-
-                command = ["bash", "-c", "TZ=Australia/Adelaide date --iso-8601=seconds"]
-                process = command.execute()
-                process.waitFor()
-                project.properties.mvnBuildDatetime = process.in.text.trim()
-
-                command = "git rev-parse HEAD"
-                process = command.execute()
-                process.waitFor()
-                project.properties.gitCommitHash = process.in.text.trim()
-
-                command = "git show --no-patch --format=%cI HEAD"
-                process = command.execute()
-                process.waitFor()
-                project.properties.gitCommitDatetime = process.in.text.trim()
-
-                command = "git tag --points-at HEAD"
-                process = command.execute()
-                process.waitFor()
-                project.properties.gitCommitTags = process.in.text.trim()
-
-                command = "git branch --show-current"
-                process = command.execute()
-                process.waitFor()
-                project.properties.gitCommitBranch = process.in.text.trim()
-              </source>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>templating-maven-plugin</artifactId>
         <version>1.0.0</version>
