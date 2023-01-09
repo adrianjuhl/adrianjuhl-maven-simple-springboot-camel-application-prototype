@@ -5,5 +5,7 @@
   "cxf.path":"/api",
   "logging.level.root":"INFO",
   "logging.level.io.github.adrianjuhl.archetype.simple_springboot_camel_application_prototype":"TRACE",
-  "spring.main.banner-mode":"off"
+  "spring.main.banner-mode":"off",
+  "myPeriod":"2000",
+  "myconfigurationproperty":"foobar"
 }

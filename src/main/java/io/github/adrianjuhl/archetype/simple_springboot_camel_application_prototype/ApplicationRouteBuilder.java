@@ -1,6 +1,7 @@
 package io.github.adrianjuhl.archetype.simple_springboot_camel_application_prototype;
 
-import javax.ws.rs.core.MediaType;
+//import javax.ws.rs.core.MediaType;
+import org.springframework.http.MediaType;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -15,10 +16,13 @@ import org.springframework.stereotype.Component;
 public class ApplicationRouteBuilder extends RouteBuilder {
 
   @Autowired
-  CamelContext camelContext;
+  private CamelContext camelContext;
 
   @Value("${camel.context.shutdown.timeout}")
   private Long camelContextShutdownTimeout;
+
+  @Value("${myconfigurationproperty}")
+  private String myconfigurationproperty;
 
   enum RouteIdentifier {
     PING                                        ("direct:handleRequestPing"),
@@ -45,10 +49,13 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
+    System.out.println("start of configure() - myconfigurationproperty is ~~~" + myconfigurationproperty + "~~~");
+
     errorHandler(noErrorHandler());
     camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
 
-    from("cxfrs:bean:restServer?bindingStyle=SimpleConsumer")
+//    from("cxfrs:bean:restServer?bindingStyle=SimpleConsumer")
+    from("cxfrs:bean:restServer")
       .log(LoggingLevel.TRACE, loggerName(), "Start of route cxfrs:bean:restServer")
       .doTry()
         .toD("direct:${header.operationName}")
@@ -86,6 +93,14 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
       .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
+    ;
+
+    from("timer:hello?period={{myPeriod}}").routeId("hello")
+      // and call the bean
+      //.bean(myBean, "saySomething")
+      .setBody(constant("hello"))
+      // and print it to system out via stream component
+      .to("stream:out")
     ;
 
   }
