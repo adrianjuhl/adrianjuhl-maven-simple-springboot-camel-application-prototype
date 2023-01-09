@@ -21,8 +21,11 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   @Value("${camel.context.shutdown.timeout}")
   private Long camelContextShutdownTimeout;
 
-  @Value("${myconfigurationproperty}")
+  @Value("${myconfigurationproperty:notsupplied}")
   private String myconfigurationproperty;
+
+  @Value("${helloTimerPeriodMilliseconds:5000}")
+  private Long helloTimerPeriodMilliseconds;
 
   enum RouteIdentifier {
     PING                                        ("direct:handleRequestPing"),
@@ -95,7 +98,8 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
     ;
 
-    from("timer:hello?period={{myPeriod}}").routeId("hello")
+    from("timer:hello?period=" + helloTimerPeriodMilliseconds)
+      .routeId("hello")
       // and call the bean
       //.bean(myBean, "saySomething")
       .setBody(constant("hello"))

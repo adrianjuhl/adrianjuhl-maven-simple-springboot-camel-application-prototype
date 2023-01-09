@@ -54,7 +54,7 @@ class ApplicationRouteBuilderTest {
   @Autowired
   private ProducerTemplate template;
 
-//  @Test
+  @Test
   public void pingRouteShouldRespondWithPingJsonResponse() throws Exception {
     MockEndpoint mockOut = getMockEndpoint("mock:out");
     AdviceWith.adviceWith(camelContext, RouteIdentifier.PING.getRouteId(), a -> {
@@ -67,7 +67,7 @@ class ApplicationRouteBuilderTest {
     mockOut.assertIsSatisfied();
     Message inMessage = mockOut.getExchanges().get(0).getIn();
     String actualBodyString = inMessage.getBody(String.class);
-    Assertions.assertEquals(MediaType.APPLICATION_JSON, inMessage.getHeader(Exchange.CONTENT_TYPE, String.class));
+    Assertions.assertEquals(MediaType.APPLICATION_JSON.toString(), inMessage.getHeader(Exchange.CONTENT_TYPE, String.class));
     Assertions.assertTrue(actualBodyString.startsWith("{"), "Body should start with {");
     Assertions.assertTrue(actualBodyString.endsWith("}"), "Body should end with }");
     Assertions.assertTrue(actualBodyString.contains("\"ping\":"), "Body should contain ping element");
