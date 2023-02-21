@@ -66,60 +66,33 @@
   </distributionManagement>
 
   <properties>
-<!--
-    <springBootStarterWebVersion>2.3.4.RELEASE</springBootStarterWebVersion>
-    <springBootStarterActuatorVersion>2.3.4.RELEASE</springBootStarterActuatorVersion>
-    <logbackClassicVersion>1.2.6</logbackClassicVersion>
-    <camelCxfStarterVersion>2.23.2.fuse-780036-redhat-00001</camelCxfStarterVersion>
-    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>
-    <jacksonJaxrsJsonProviderVersion>2.9.10</jacksonJaxrsJsonProviderVersion>
-    <junitJupiterVersion>5.6.2</junitJupiterVersion>
-    <camelTestVersion>2.23.2.fuse-780036-redhat-00001</camelTestVersion>
-    <camelTestSpringVersion>2.23.2.fuse-780036-redhat-00001</camelTestSpringVersion>
-    <springBootTestVersion>2.3.4.RELEASE</springBootTestVersion>
--->
-    <logstashLogbackEncoderVersion>7.2</logstashLogbackEncoderVersion>
-
-<!--    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>-->
+	<springBootDependenciesVersion>2.7.8</springBootDependenciesVersion>
+	<camelSpringBootBomVersion>3.20.2</camelSpringBootBomVersion>
+    <logstashLogbackEncoderVersion>7.3</logstashLogbackEncoderVersion>
     <cxfSpringBootStarterJaxrsVersion>3.5.5</cxfSpringBootStarterJaxrsVersion>
-
-<!--    <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>-->
     <springBootMavenPluginVersion>3.0.1</springBootMavenPluginVersion>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-      <!-- Spring Boot BOM -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>2.7.7</version>
+        <version>${springBootDependenciesVersion}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-<!--
-        <version>3.0.1</version>
--->
-
-
-      <!-- Camel BOM -->
       <dependency>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-spring-boot-bom</artifactId>
-        <version>3.20.1</version>
+        <version>${camelSpringBootBomVersion}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
 
     </dependencies>
   </dependencyManagement>
-<!--
-        <version>3.21.0-SNAPSHOT</version>
--->
-
   <dependencies>
-
-    <!-- Spring Boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -211,7 +184,6 @@
       <plugin>
         <groupId>org.codehaus.gmavenplus</groupId>
         <artifactId>gmavenplus-plugin</artifactId>
-        <version>2.1.0</version>
         <executions>
           <execution>
             <id>set-properties-build-properties</id>
@@ -256,37 +228,17 @@
             </script>
           </scripts>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <!-- any version of Groovy \>= 1.5.0 should work here -->
-            <version>3.0.13</version>
-            <type>pom</type>
-            <scope>runtime</scope>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>templating-maven-plugin</artifactId>
-        <version>1.0.0</version>
+        <!--  See: https://www.mojohaus.org/templating-maven-plugin/ -->
         <executions>
           <execution>
-            <id>filter-src</id>
+            <id>filter-source-java-templates</id>
             <goals>
               <goal>filter-sources</goal>
             </goals>
-                <configuration>
-                  <!--
-                    Note the two following parameters are the default one.
-                    These are specified here just as a reminder.
-                    But as the Maven philosophy is strongly about conventions,
-                    it's better to just not specify them.
-                  -->
-                  <sourceDirectory>${basedir}/src/main/java-templates</sourceDirectory>
-                  <outputDirectory>${project.build.directory}/generated-sources/java-templates</outputDirectory>
-                </configuration>
           </execution>
         </executions>
       </plugin>
@@ -296,9 +248,7 @@
   <profiles>
     <profile>
       <id>enable-camel-developer-console</id>
-      <!--
-        See: https://camel.apache.org/manual/camel-console.html
-      -->
+      <!--  See: https://camel.apache.org/manual/camel-console.html  -->
       <dependencies>
         <dependency>
           <groupId>org.apache.camel.springboot</groupId>
