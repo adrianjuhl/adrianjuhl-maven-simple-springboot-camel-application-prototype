@@ -10,6 +10,11 @@ public class AppVersionInfo {
   private String gitCommitTags = "${gitCommitTags}";
   private String gitCommitBranch = "${gitCommitBranch}";
   private String mvnBuildDatetime = "${mvnBuildDatetime}";
+  private String appVersionInfoConfigProperty;
+
+  public AppVersionInfo(final String appVersionInfoConfigProperty) {
+    this.appVersionInfoConfigProperty = appVersionInfoConfigProperty;
+  }
 
   public String toJsonString() {
     return new StringBuilder()
@@ -22,7 +27,8 @@ public class AppVersionInfo {
       .append(        "\"gitCommitDatetime\":\"").append(gitCommitDatetime).append("\",")
       .append(        "\"gitCommitTags\":\"").append(gitCommitTags).append("\",")
       .append(        "\"gitCommitBranch\":\"").append(gitCommitBranch).append("\",")
-      .append(        "\"mvnBuildDatetime\":\"").append(mvnBuildDatetime).append("\"")
+      .append(        "\"mvnBuildDatetime\":\"").append(mvnBuildDatetime).append("\",")
+      .append(        "\"appVersionInfoConfigProperty\":\"").append(appVersionInfoConfigProperty).append("\"")
       .append(    "}")
       .append("}")
       .toString();

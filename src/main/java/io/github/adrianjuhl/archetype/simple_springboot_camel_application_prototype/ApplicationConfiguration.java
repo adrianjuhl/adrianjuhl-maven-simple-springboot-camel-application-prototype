@@ -22,7 +22,6 @@ public class ApplicationConfiguration {
     restServer.setServiceClass(RestInterface.class);
     restServer.setProvider(jsonProvider());
     restServer.setBus(bus);
-    System.out.println("end of restServer()");
     return restServer;
   }
 

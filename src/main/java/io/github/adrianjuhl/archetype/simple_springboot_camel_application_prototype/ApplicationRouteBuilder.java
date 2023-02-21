@@ -19,8 +19,8 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   @Value("${camel.context.shutdown.timeout}")
   private Long camelContextShutdownTimeout;
 
-  @Value("${myconfigurationproperty:notsupplied}")
-  private String myconfigurationproperty;
+  @Value("${appVersionInfoConfigProperty:notsupplied}")
+  private String appVersionInfoConfigProperty;
 
   @Value("${helloTimerPeriodMilliseconds:5000}")
   private Long helloTimerPeriodMilliseconds;
@@ -50,7 +50,12 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
-    System.out.println("start of configure() - myconfigurationproperty is ~~~" + myconfigurationproperty + "~~~");
+    System.out.println("start of configure() - appVersionInfoConfigProperty is ~~~" + appVersionInfoConfigProperty + "~~~");
+
+    // The source of AppVersionInfo is within src/main/java-templates/
+    Class<?> appVersionInfoClass = Class.forName(ApplicationRouteBuilder.class.getPackageName() + ".AppVersionInfo");
+    Object appVersionInfo = appVersionInfoClass.getDeclaredConstructor(String.class).newInstance(appVersionInfoConfigProperty);
+    Object appVersionInfoJson = appVersionInfoClass.getMethod("toJsonString").invoke(appVersionInfo);
 
     errorHandler(noErrorHandler());
     camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
@@ -94,7 +99,10 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .removeHeaders("*")
       .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.OK.value()))
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
-      .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
+      .setBody(constant(appVersionInfoJson))
+//      .setBody(constant(appVersionInfoClass.getMethod("toJsonString").invoke(appVersionInfo)))
+//      .setBody(constant(appVersionInfoClass.getMethod("toJsonString").invoke(appVersionInfoClass.getDeclaredConstructor(String.class).newInstance(appVersionInfoConfigProperty))))
+//      .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
     ;
 

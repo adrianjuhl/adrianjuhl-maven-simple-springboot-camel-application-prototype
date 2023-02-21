@@ -3,49 +3,25 @@ package io.github.adrianjuhl.archetype.simple_springboot_camel_application_proto
 import java.util.List;
 import java.util.Map;
 
-//import javax.ws.rs.core.MediaType;
-import org.springframework.http.MediaType;
-
-//import org.apache.camel.CamelContext;
-//import org.apache.camel.Exchange;
-//import org.apache.camel.Message;
-//import org.apache.camel.ProducerTemplate;
-//import org.apache.camel.builder.AdviceWith;
-//import org.apache.camel.builder.AdviceWithRouteBuilder;
-//import org.apache.camel.component.mock.MockEndpoint;
-//import org.apache.camel.model.ModelCamelContext;
-//import org.apache.camel.reifier.RouteReifier;
-////import org.junit.Assert;
-//import org.junit.jupiter.api.Assertions;
-//import org.junit.jupiter.api.Test;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-//import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.TestPropertySource;
-
-import java.util.concurrent.TimeUnit;
-
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.AdviceWith;
-import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 
 import io.github.adrianjuhl.archetype.simple_springboot_camel_application_prototype.ApplicationRouteBuilder.RouteIdentifier;
 
-@DirtiesContext(classMode=DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @SpringBootTest(classes=Application.class)
-@TestPropertySource(properties = {
-    "camel.context.shutdown.timeout=10"
-})
+@TestPropertySource(properties = { "camel.context.shutdown.timeout=10" })
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class ApplicationRouteBuilderTest {
 
   @Autowired

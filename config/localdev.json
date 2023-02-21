@@ -8,5 +8,5 @@
   "management.endpoints.web.exposure.include":"info,health,camel",
   "spring.main.banner-mode":"off",
   "helloTimerPeriodMilliseconds":"2000",
-  "myconfigurationproperty":"foobar"
+  "appVersionInfoConfigProperty":"foobar"
 }

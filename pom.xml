@@ -78,7 +78,7 @@
     <camelTestSpringVersion>2.23.2.fuse-780036-redhat-00001</camelTestSpringVersion>
     <springBootTestVersion>2.3.4.RELEASE</springBootTestVersion>
 -->
-    <logstashLogbackEncoderVersion>6.6</logstashLogbackEncoderVersion>
+    <logstashLogbackEncoderVersion>7.2</logstashLogbackEncoderVersion>
 
 <!--    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>-->
     <cxfSpringBootStarterJaxrsVersion>3.5.5</cxfSpringBootStarterJaxrsVersion>
@@ -117,49 +117,50 @@
         <version>3.21.0-SNAPSHOT</version>
 -->
 
-    <dependencies>
+  <dependencies>
 
-        <!-- Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+    <!-- Spring Boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-undertow</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
 
-        <!-- Camel -->
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-stream-starter</artifactId>
-        </dependency>
+    <!-- Camel -->
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-stream-starter</artifactId>
+    </dependency>
 
 
 
-<dependency>
-  <groupId>org.apache.camel.springboot</groupId>
-  <artifactId>camel-cxf-rest-starter</artifactId>
-</dependency>
 
-<dependency>
- <groupId>org.apache.camel.springboot</groupId>
- <artifactId>camel-jackson-starter</artifactId>
- </dependency>
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-cxf-rest-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-jackson-starter</artifactId>
+    </dependency>
 
 
     <dependency>
@@ -173,26 +174,24 @@
       <version>${cxfSpringBootStarterJaxrsVersion}</version>
     </dependency>
 
-
     <dependency>
       <groupId>net.logstash.logback</groupId>
       <artifactId>logstash-logback-encoder</artifactId>
       <version>${logstashLogbackEncoderVersion}</version>
     </dependency>
 
-
-        <!-- test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test-spring-junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!-- test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-test-spring-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
     <finalName>${project.artifactId}</finalName>
@@ -294,4 +293,26 @@
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>enable-camel-developer-console</id>
+      <!--
+        See: https://camel.apache.org/manual/camel-console.html
+      -->
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel.springboot</groupId>
+          <artifactId>camel-console-starter</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.camel.springboot</groupId>
+          <artifactId>camel-management-starter</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.camel.springboot</groupId>
+          <artifactId>camel-cli-connector-starter</artifactId>
+        </dependency>
+	  </dependencies>
+	</profile>
+  </profiles>
 </project>
