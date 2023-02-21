@@ -79,8 +79,11 @@
     <springBootTestVersion>2.3.4.RELEASE</springBootTestVersion>
 -->
     <logstashLogbackEncoderVersion>6.6</logstashLogbackEncoderVersion>
-    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>
-    <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>
+
+<!--    <cxfSpringBootStarterJaxrsVersion>3.3.6.fuse-780029-redhat-00001</cxfSpringBootStarterJaxrsVersion>-->
+    <cxfSpringBootStarterJaxrsVersion>3.5.5</cxfSpringBootStarterJaxrsVersion>
+
+<!--    <commonsHttpclientVersion>3.1.0.redhat-8</commonsHttpclientVersion>-->
     <springBootMavenPluginVersion>3.0.1</springBootMavenPluginVersion>
   </properties>
 
@@ -146,11 +149,6 @@
             <artifactId>camel-stream-starter</artifactId>
         </dependency>
 
-    <dependency>
-      <groupId>commons-httpclient</groupId>
-      <artifactId>commons-httpclient</artifactId>
-      <version>${commonsHttpclientVersion}</version>
-    </dependency>
 
 
 <dependency>
@@ -168,12 +166,12 @@
       <groupId>com.fasterxml.jackson.jaxrs</groupId>
       <artifactId>jackson-jaxrs-json-provider</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
       <version>${cxfSpringBootStarterJaxrsVersion}</version>
     </dependency>
-
 
 
     <dependency>

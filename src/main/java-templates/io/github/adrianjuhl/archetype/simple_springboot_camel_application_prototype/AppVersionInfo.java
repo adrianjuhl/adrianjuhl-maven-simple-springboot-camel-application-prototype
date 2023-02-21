@@ -13,19 +13,19 @@ public class AppVersionInfo {
 
   public String toJsonString() {
     return new StringBuilder()
-    .append("{\"appVersionInfo\":")
-    .append(    "{")
-    .append(        "\"projectGroupId\":\"").append(projectGroupId).append("\",")
-    .append(        "\"projectArtifactId\":\"").append(projectArtifactId).append("\",")
-    .append(        "\"projectVersion\":\"").append(projectVersion).append("\",")
-    .append(        "\"gitCommitHash\":\"").append(gitCommitHash).append("\",")
-    .append(        "\"gitCommitDatetime\":\"").append(gitCommitDatetime).append("\",")
-    .append(        "\"gitCommitTags\":\"").append(gitCommitTags).append("\",")
-    .append(        "\"gitCommitBranch\":\"").append(gitCommitBranch).append("\",")
-    .append(        "\"mvnBuildDatetime\":\"").append(mvnBuildDatetime).append("\"")
-    .append(    "}")
-    .append("}")
-    .toString();
+      .append("{\"appVersionInfo\":")
+      .append(    "{")
+      .append(        "\"projectGroupId\":\"").append(projectGroupId).append("\",")
+      .append(        "\"projectArtifactId\":\"").append(projectArtifactId).append("\",")
+      .append(        "\"projectVersion\":\"").append(projectVersion).append("\",")
+      .append(        "\"gitCommitHash\":\"").append(gitCommitHash).append("\",")
+      .append(        "\"gitCommitDatetime\":\"").append(gitCommitDatetime).append("\",")
+      .append(        "\"gitCommitTags\":\"").append(gitCommitTags).append("\",")
+      .append(        "\"gitCommitBranch\":\"").append(gitCommitBranch).append("\",")
+      .append(        "\"mvnBuildDatetime\":\"").append(mvnBuildDatetime).append("\"")
+      .append(    "}")
+      .append("}")
+      .toString();
   }
 
 }

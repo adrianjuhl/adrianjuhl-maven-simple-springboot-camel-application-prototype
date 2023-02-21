@@ -1,15 +1,13 @@
 package io.github.adrianjuhl.archetype.simple_springboot_camel_application_prototype;
 
-//import javax.ws.rs.core.MediaType;
-import org.springframework.http.MediaType;
-
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.commons.httpclient.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -74,7 +72,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .log(LoggingLevel.ERROR, loggerName(), "An uncaught exception occurred:")
       .toF("log:%s?level=ERROR&showBody=false&showCaughtException=true&showStackTrace=true", loggerName())
       .removeHeaders("*")
-      .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.SC_INTERNAL_SERVER_ERROR))
+      .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.INTERNAL_SERVER_ERROR.value()))
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
       .setBody(constant("{\"error\":\"An unexpected error occurred. This error has been logged and will be investigated.\"}"))
       .log(LoggingLevel.TRACE, loggerName(), "End of route direct:handleUncaughtException")
@@ -84,6 +82,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .routeId(RouteIdentifier.PING.getRouteId())
       .log(LoggingLevel.TRACE, loggerName(), "Start of route " + RouteIdentifier.PING.getRouteUri())
       .removeHeaders("*")
+      .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.OK.value()))
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
       .setBody(constant("{\"ping\":\"ping_response\"}"))
        .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.PING.getRouteUri())
@@ -93,6 +92,7 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .routeId(RouteIdentifier.APP_VERSION_INFO.getRouteId())
       .log(LoggingLevel.TRACE, loggerName(), "Start of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
       .removeHeaders("*")
+      .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.OK.value()))
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
       .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
