@@ -5,7 +5,8 @@
 usage()
 {
   cat <<USAGE_TEXT
-Usage: $(basename "${BASH_SOURCE[0]}") [-h | --help] [-v | --verbose] [--enable_camel_developer_console=<true|false>]
+Usage: $(basename "${BASH_SOURCE[0]}") [-h | --help] [-v | --verbose]
+                       [--enable_camel_developer_console=<true|false>]
 Run simple-springboot-camel-application-prototype with localdev config.
 Available options:
 -h, --help         Print this help and exit

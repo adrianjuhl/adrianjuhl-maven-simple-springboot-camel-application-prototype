@@ -262,7 +262,7 @@
           <groupId>org.apache.camel.springboot</groupId>
           <artifactId>camel-cli-connector-starter</artifactId>
         </dependency>
-	  </dependencies>
-	</profile>
+      </dependencies>
+    </profile>
   </profiles>
 </project>
