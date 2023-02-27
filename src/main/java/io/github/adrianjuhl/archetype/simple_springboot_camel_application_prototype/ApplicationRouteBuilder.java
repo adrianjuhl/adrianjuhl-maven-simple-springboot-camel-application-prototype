@@ -50,8 +50,6 @@ public class ApplicationRouteBuilder extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 
-    System.out.println("start of configure() - appVersionInfoConfigProperty is ~~~" + appVersionInfoConfigProperty + "~~~");
-
     // The source of AppVersionInfo is within src/main/java-templates/
     Class<?> appVersionInfoClass = Class.forName(ApplicationRouteBuilder.class.getPackageName() + ".AppVersionInfo");
     Object appVersionInfo = appVersionInfoClass.getDeclaredConstructor(String.class).newInstance(appVersionInfoConfigProperty);
@@ -60,7 +58,6 @@ public class ApplicationRouteBuilder extends RouteBuilder {
     errorHandler(noErrorHandler());
     camelContext.getShutdownStrategy().setTimeout(camelContextShutdownTimeout);
 
-//    from("cxfrs:bean:restServer?bindingStyle=SimpleConsumer")
     from("cxfrs:bean:restServer")
       .log(LoggingLevel.TRACE, loggerName(), "Start of route cxfrs:bean:restServer")
       .doTry()
@@ -100,18 +97,12 @@ public class ApplicationRouteBuilder extends RouteBuilder {
       .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.OK.value()))
       .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_JSON))
       .setBody(constant(appVersionInfoJson))
-//      .setBody(constant(appVersionInfoClass.getMethod("toJsonString").invoke(appVersionInfo)))
-//      .setBody(constant(appVersionInfoClass.getMethod("toJsonString").invoke(appVersionInfoClass.getDeclaredConstructor(String.class).newInstance(appVersionInfoConfigProperty))))
-//      .setBody(constant(new AppVersionInfo().toJsonString())) // The source of AppVersionInfo is in src/main/java-templates/ 
       .log(LoggingLevel.TRACE, loggerName(), "End of route " + RouteIdentifier.APP_VERSION_INFO.getRouteUri())
     ;
 
     from("timer:hello?period=" + helloTimerPeriodMilliseconds)
       .routeId("hello")
-      // and call the bean
-      //.bean(myBean, "saySomething")
-      .setBody(constant("hello"))
-      // and print it to system out via stream component
+      .setBody(constant("{\"hello\":\"hello\"}"))
       .to("stream:out")
     ;
 

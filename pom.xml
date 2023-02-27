@@ -2,21 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-
   <parent>
     <groupId>io.github.adrianjuhl</groupId>
     <artifactId>adrianjuhl-parent</artifactId>
     <version>1.1.0-SNAPSHOT</version>
   </parent>
 
-
-<!--
-	<parent>
-		<groupId>org.apache.camel.springboot</groupId>
-		<artifactId>spring-boot</artifactId>
-		<version>3.20.0</version>
-	</parent>
--->
   <groupId>io.github.adrianjuhl.archetype</groupId>
   <artifactId>simple-springboot-camel-application-prototype</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -66,11 +57,11 @@
   </distributionManagement>
 
   <properties>
-	<springBootDependenciesVersion>2.7.8</springBootDependenciesVersion>
-	<camelSpringBootBomVersion>3.20.2</camelSpringBootBomVersion>
+    <springBootDependenciesVersion>2.7.9</springBootDependenciesVersion>
+    <camelSpringBootDependenciesVersion>3.20.2</camelSpringBootDependenciesVersion>
     <logstashLogbackEncoderVersion>7.3</logstashLogbackEncoderVersion>
     <cxfSpringBootStarterJaxrsVersion>3.5.5</cxfSpringBootStarterJaxrsVersion>
-    <springBootMavenPluginVersion>3.0.1</springBootMavenPluginVersion>
+    <springBootMavenPluginVersion>3.0.2</springBootMavenPluginVersion>
   </properties>
 
   <dependencyManagement>
@@ -84,12 +75,11 @@
       </dependency>
       <dependency>
         <groupId>org.apache.camel.springboot</groupId>
-        <artifactId>camel-spring-boot-bom</artifactId>
-        <version>${camelSpringBootBomVersion}</version>
+        <artifactId>camel-spring-boot-dependencies</artifactId>
+        <version>${camelSpringBootDependenciesVersion}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -108,52 +98,35 @@
       <artifactId>spring-boot-starter-undertow</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-
-    <!-- Camel -->
-    <dependency>
       <groupId>org.apache.camel.springboot</groupId>
       <artifactId>camel-spring-boot-starter</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-stream-starter</artifactId>
-    </dependency>
-
-
-
-
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
       <artifactId>camel-cxf-rest-starter</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-jackson-starter</artifactId>
-    </dependency>
-
-
     <dependency>
       <groupId>com.fasterxml.jackson.jaxrs</groupId>
       <artifactId>jackson-jaxrs-json-provider</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-stream-starter</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
       <version>${cxfSpringBootStarterJaxrsVersion}</version>
     </dependency>
-
     <dependency>
       <groupId>net.logstash.logback</groupId>
       <artifactId>logstash-logback-encoder</artifactId>
       <version>${logstashLogbackEncoderVersion}</version>
     </dependency>
-
-    <!-- test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
